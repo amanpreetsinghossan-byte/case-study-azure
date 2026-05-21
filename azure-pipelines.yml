@@ -1,0 +1,48 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  RESOURCE_GROUP: 'RG-User03'
+  VM1: 'aso-vm-web-01'
+  VM2: 'aso-vm-web-02'
+
+stages:
+  - stage: Deploy
+    displayName: Deploy MyEcomm to Azure VMs
+    jobs:
+      - job: DeployToVMs
+        displayName: Deploy website to both web VMs
+        steps:
+          - checkout: self
+
+          - task: AzureCLI@2
+            displayName: Deploy index.html to VM Web 01 and VM Web 02
+            inputs:
+              azureSubscription: 'aso-azure-connection'
+              scriptType: bash
+              scriptLocation: inlineScript
+              inlineScript: |
+                echo "Preparing website deployment..."
+
+                HTML_CONTENT=$(base64 -w 0 index.html)
+
+                echo "Deploying to VM Web 01..."
+                az vm run-command invoke \
+                  --resource-group "$(RESOURCE_GROUP)" \
+                  --name "$(VM1)" \
+                  --command-id RunShellScript \
+                  --scripts "echo '$HTML_CONTENT' | base64 -d | sudo tee /var/www/html/index.html > /dev/null && sudo systemctl restart nginx"
+
+                echo "Deploying to VM Web 02..."
+                az vm run-command invoke \
+                  --resource-group "$(RESOURCE_GROUP)" \
+                  --name "$(VM2)" \
+                  --command-id RunShellScript \
+                  --scripts "echo '$HTML_CONTENT' | base64 -d | sudo tee /var/www/html/index.html > /dev/null && sudo systemctl restart nginx"
+
+                echo "Deployment completed successfully."
