@@ -1,0 +1,57 @@
+name: Deploy MyEcomm to Azure VMs
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  RESOURCE_GROUP: RG-User03
+  VM1: aso-vm-web-01
+  VM2: aso-vm-web-02
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Login to Azure
+        uses: azure/login@v3
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Prepare deployment content
+        run: |
+          HTML_CONTENT=$(base64 -w 0 index.html)
+          echo "HTML_CONTENT=$HTML_CONTENT" >> $GITHUB_ENV
+
+      - name: Deploy to VM Web 01
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az vm run-command invoke \
+              --resource-group "$RESOURCE_GROUP" \
+              --name "$VM1" \
+              --command-id RunShellScript \
+              --scripts "echo '$HTML_CONTENT' | base64 -d | sudo tee /var/www/html/index.html > /dev/null && sudo systemctl restart nginx"
+
+      - name: Deploy to VM Web 02
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az vm run-command invoke \
+              --resource-group "$RESOURCE_GROUP" \
+              --name "$VM2" \
+              --command-id RunShellScript \
+              --scripts "echo '$HTML_CONTENT' | base64 -d | sudo tee /var/www/html/index.html > /dev/null && sudo systemctl restart nginx"
+
+      - name: Show deployment result
+        run: |
+          echo "Deployment completed successfully."
+          echo "Open your Load Balancer public IP to verify the website."
