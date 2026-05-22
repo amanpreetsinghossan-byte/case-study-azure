@@ -1,39 +1,25 @@
-trigger:
-  branches:
-    include:
-      - main
+          NGINX_CONF=$(cat <<'EOF' | base64 -w 0
+server {
+    listen 80 default_server;
+    root /var/www/html;
+    index index.html;
 
-pool:
-  vmImage: ubuntu-latest
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
 
-variables:
-  RESOURCE_GROUP: 'RG-User03'
-  VMSS_NAME: 'aso-vmss-web-ci'
-
-stages:
-- stage: Deploy
-  jobs:
-  - job: DeployApp
-    steps:
-    - checkout: self
-
-    - task: AzureCLI@2
-      inputs:
-        azureSubscription: 'aso-azure-connection'
-        scriptType: bash
-        scriptLocation: inlineScript
-        inlineScript: |
-          echo "Encoding files..."
-
-          HTML=$(base64 -w 0 index.html)
-          SERVER=$(base64 -w 0 server.js)
-          PACKAGE=$(base64 -w 0 package.json)
-
-          echo "Deploying to VMSS: $(VMSS_NAME)"
+    location /products {
+        proxy_pass http://localhost:3000/products;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+    }
+}
+EOF
+)
 
           az vmss extension set \
             --resource-group "$(RESOURCE_GROUP)" \
             --vmss-name "$(VMSS_NAME)" \
             --name CustomScript \
             --publisher Microsoft.Azure.Extensions \
-            --settings "{\"commandToExecute\":\"sudo apt update -y && sudo apt install -y nginx curl && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt install -y nodejs && sudo mkdir -p /var/www/html /home/azureuser && echo '$HTML' | base64 -d | sudo tee /var/www/html/index.html > /dev/null && echo '$SERVER' | base64 -d | sudo tee /home/azureuser/server.js > /dev/null && echo '$PACKAGE' | base64 -d | sudo tee /home/azureuser/package.json > /dev/null && cd /home/azureuser && npm install && sudo pkill node || true && export DB_USER='kirito' && export DB_PASSWORD='Amanossan@01' && export DB_SERVER='aso-mysql-server-8899.database.windows.net' && export DB_NAME='aso-mysqldb-7788' && nohup node server.js > app.log 2>&1 & sudo bash -c 'cat > /etc/nginx/sites-available/default <<EOF\nserver {\n listen 80 default_server;\n root /var/www/html;\n index index.html;\n location / { try_files \\$uri \\$uri/ /index.html; }\n location /products { proxy_pass http://localhost:3000/products; proxy_http_version 1.1; proxy_set_header Host \\$host; }\n}\nEOF\nnginx -t && systemctl restart nginx'\"}"
+            --settings "{\"commandToExecute\":\"sudo apt update -y && sudo apt install -y nginx curl && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt install -y nodejs && sudo mkdir -p /var/www/html /home/azureuser && echo '$HTML' | base64 -d | sudo tee /var/www/html/index.html > /dev/null && echo '$SERVER' | base64 -d | sudo tee /home/azureuser/server.js > /dev/null && echo '$PACKAGE' | base64 -d | sudo tee /home/azureuser/package.json > /dev/null && echo '$NGINX_CONF' | base64 -d | sudo tee /etc/nginx/sites-available/default > /dev/null && sudo nginx -t && sudo systemctl restart nginx && cd /home/azureuser && npm install && sudo pkill node || true && export DB_USER='kirito' && export DB_PASSWORD='Amanossan@01' && export DB_SERVER='aso-mysql-server-8899.database.windows.net' && export DB_NAME='aso-mysqldb-7788' && nohup node server.js > app.log 2>&1 &\"}"
