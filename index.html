@@ -559,7 +559,9 @@
       const status = document.getElementById("db-status");
 
       try {
-        const response = await fetch("/products");
+        const response = await fetch("/products?ts=" + Date.now(), {
+  cache: "no-store"
+});
 
         if (!response.ok) {
           throw new Error("API not available");
