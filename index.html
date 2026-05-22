@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>StepPro - Premium Footwear</title>
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --primary: #1e3a8a;
@@ -22,9 +19,7 @@
       --border: #e2e8f0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -33,25 +28,12 @@
       line-height: 1.6;
     }
 
-    /* Header & Navigation */
     header {
       position: sticky;
       top: 0;
       background: var(--card-bg);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
       z-index: 100;
-      animation: slideDown 0.5s ease;
-    }
-
-    @keyframes slideDown {
-      from {
-        transform: translateY(-100%);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
     }
 
     .header-container {
@@ -67,16 +49,13 @@
       font-size: 1.8rem;
       font-weight: 700;
       color: var(--primary);
-      letter-spacing: -0.5px;
     }
 
-    .logo span {
-      color: var(--secondary);
-    }
+    .logo span { color: var(--secondary); }
 
     nav {
       display: flex;
-      gap: 2rem;
+      gap: 1.5rem;
       align-items: center;
     }
 
@@ -87,283 +66,159 @@
       color: var(--text-dark);
       cursor: pointer;
       font-weight: 500;
-      transition: all 0.3s ease;
       padding: 0.5rem 1rem;
       border-radius: 4px;
     }
 
-    nav button:hover {
-      color: var(--secondary);
-      background: rgba(15, 118, 110, 0.1);
-    }
-
+    nav button:hover,
     nav button.active {
       color: var(--secondary);
-      border-bottom: 2px solid var(--secondary);
+      background: rgba(15,118,110,0.08);
     }
 
-    .cart-icon {
-      position: relative;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
+    .cart-icon { position: relative; font-size: 1.5rem; }
 
     .cart-count {
       position: absolute;
-      top: -8px;
-      right: -8px;
+      top: -10px;
+      right: -12px;
       background: var(--accent);
       color: white;
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       font-size: 0.75rem;
-      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    /* Page Sections */
-    .page {
-      display: none;
-      animation: fadeIn 0.6s ease;
-    }
+    .page { display: none; }
+    .page.active { display: block; }
 
-    .page.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Hero Section */
     .hero {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
       padding: 6rem 2rem;
       text-align: center;
-      min-height: 600px;
+      min-height: 560px;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
-      position: relative;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 400px;
-      height: 400px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      top: -100px;
-      right: -100px;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 50%;
-      bottom: -50px;
-      left: -100px;
-      animation: float 8s ease-in-out infinite 1s;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(20px);
-      }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      animation: slideUp 0.8s ease 0.3s backwards;
-    }
-
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    .hero-content { max-width: 800px; }
 
     .hero h1 {
       font-size: 3.5rem;
       margin-bottom: 1rem;
-      font-weight: 800;
-      letter-spacing: -1px;
     }
 
     .hero p {
       font-size: 1.3rem;
       margin-bottom: 2rem;
-      opacity: 0.95;
-      font-weight: 300;
     }
 
     .btn {
-      display: inline-block;
       padding: 1rem 2.5rem;
       background: var(--accent);
       color: white;
-      text-decoration: none;
+      border: none;
       border-radius: 50px;
       font-weight: 600;
-      transition: all 0.3s ease;
-      border: none;
       cursor: pointer;
       font-size: 1rem;
+      margin: 0.4rem;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
-    }
+    .btn-secondary { background: var(--secondary); }
 
-    .btn-secondary {
-      background: var(--secondary);
-      margin-left: 1rem;
-    }
-
-    .btn-secondary:hover {
-      box-shadow: 0 10px 25px rgba(15, 118, 110, 0.3);
-    }
-
-    /* Main Container */
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 2rem;
+      padding: 3rem 2rem;
     }
 
-    /* Products Section */
     .products-header {
       text-align: center;
-      margin-bottom: 4rem;
-      animation: fadeIn 0.6s ease;
+      margin-bottom: 3rem;
     }
 
     .products-header h2 {
       font-size: 2.5rem;
-      margin-bottom: 0.5rem;
       color: var(--primary);
     }
 
     .products-header p {
-      font-size: 1.1rem;
       color: var(--text-light);
+    }
+
+    .db-status {
+      margin-top: 1rem;
+      color: var(--secondary);
+      font-weight: 600;
     }
 
     .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 2rem;
-      margin-bottom: 4rem;
     }
 
     .product-card {
       background: var(--card-bg);
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s ease;
-      animation: scaleIn 0.5s ease;
-    }
-
-    @keyframes scaleIn {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: 0.3s ease;
     }
 
     .product-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
     }
 
     .product-image {
-      width: 100%;
-      height: 280px;
-      background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
-      overflow: hidden;
+      height: 260px;
+      background: linear-gradient(135deg, #dbeafe, #ccfbf1);
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      font-size: 4rem;
     }
 
-    .product-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-
-    .product-card:hover .product-image img {
-      transform: scale(1.1);
-    }
-
-    .product-info {
-      padding: 1.5rem;
-    }
+    .product-info { padding: 1.5rem; }
 
     .product-category {
       font-size: 0.85rem;
       color: var(--secondary);
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
       margin-bottom: 0.5rem;
     }
 
     .product-name {
       font-size: 1.3rem;
       margin-bottom: 0.5rem;
-      color: var(--text-dark);
-      font-weight: 600;
     }
 
     .product-desc {
       color: var(--text-light);
-      font-size: 0.95rem;
       margin-bottom: 1rem;
-      line-height: 1.5;
+    }
+
+    .product-stock {
+      color: var(--secondary);
+      font-weight: 600;
+      margin-bottom: 1rem;
     }
 
     .product-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 1rem;
       border-top: 1px solid var(--border);
+      padding-top: 1rem;
     }
 
     .product-price {
@@ -380,15 +235,10 @@
       border-radius: 6px;
       cursor: pointer;
       font-weight: 600;
-      transition: all 0.3s ease;
     }
 
-    .add-to-cart:hover {
-      background: var(--secondary);
-      transform: scale(1.05);
-    }
+    .add-to-cart:hover { background: var(--secondary); }
 
-    /* About Section */
     .about {
       background: var(--light-bg);
       padding: 4rem 2rem;
@@ -396,76 +246,49 @@
 
     .about-container {
       max-width: 900px;
-      margin: 0 auto;
+      margin: auto;
     }
 
     .about h2 {
+      text-align: center;
+      color: var(--primary);
       font-size: 2.5rem;
       margin-bottom: 2rem;
-      color: var(--primary);
-      text-align: center;
     }
 
     .about-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
-      align-items: center;
-      margin-bottom: 3rem;
-    }
-
-    .about-text h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--text-dark);
     }
 
     .about-text p {
       color: var(--text-light);
       margin-bottom: 1rem;
-      line-height: 1.8;
     }
 
     .features {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
       margin-top: 3rem;
     }
 
     .feature {
-      background: var(--card-bg);
+      background: white;
       padding: 2rem;
       border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      transition: all 0.3s ease;
-    }
-
-    .feature:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     .feature-icon {
-      font-size: 2.5rem;
+      font-size: 2.3rem;
       margin-bottom: 1rem;
     }
 
-    .feature h4 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: var(--primary);
-    }
-
-    .feature p {
-      color: var(--text-light);
-      font-size: 0.95rem;
-    }
-
-    /* Cart Section */
     .cart-container {
       max-width: 900px;
-      margin: 0 auto;
+      margin: auto;
       padding: 3rem 2rem;
     }
 
@@ -475,52 +298,25 @@
     }
 
     .cart-header h2 {
-      font-size: 2.5rem;
       color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-
-    .cart-items {
-      margin-bottom: 2rem;
+      font-size: 2.5rem;
     }
 
     .cart-item {
-      background: var(--card-bg);
+      background: white;
       padding: 1.5rem;
       border-radius: 8px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 1rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      animation: slideInLeft 0.5s ease;
-    }
-
-    @keyframes slideInLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .cart-item-info h4 {
-      color: var(--text-dark);
-      margin-bottom: 0.5rem;
-    }
-
-    .cart-item-info p {
-      color: var(--text-light);
-      font-size: 0.9rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
     .cart-item-price {
-      font-size: 1.3rem;
+      color: var(--accent);
       font-weight: 700;
-      color: var(--accent);;
+      font-size: 1.2rem;
     }
 
     .remove-btn {
@@ -530,31 +326,19 @@
       padding: 0.5rem 1rem;
       border-radius: 4px;
       cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .remove-btn:hover {
-      background: #dc2626;
     }
 
     .cart-summary {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
       padding: 2rem;
       border-radius: 12px;
       text-align: right;
-      animation: slideUp 0.6s ease;
-    }
-
-    .cart-summary p {
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
     }
 
     .cart-total {
       font-size: 2rem;
       font-weight: 700;
-      margin-bottom: 1.5rem;
     }
 
     .empty-cart {
@@ -563,12 +347,6 @@
       color: var(--text-light);
     }
 
-    .empty-cart p {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Footer */
     footer {
       background: var(--text-dark);
       color: white;
@@ -577,66 +355,18 @@
       margin-top: 4rem;
     }
 
-    footer p {
-      opacity: 0.8;
-      margin-bottom: 0.5rem;
-    }
-
-    /* Scroll Animation */
-    .scroll-animate {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease;
-    }
-
-    .scroll-animate.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Responsive */
     @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
-
-      nav {
-        gap: 1rem;
-        flex-direction: column;
-        width: 100%;
-      }
-
-      nav button {
-        width: 100%;
-        text-align: left;
-      }
-
-      .products-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .about-content {
-        grid-template-columns: 1fr;
-      }
-
-      .cart-item {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .cart-summary {
-        text-align: center;
-      }
-
-      .btn {
-        margin-left: 0;
-        margin-bottom: 0.5rem;
-      }
+      .hero h1 { font-size: 2.2rem; }
+      nav { gap: 0.5rem; flex-wrap: wrap; }
+      .about-content,
+      .features { grid-template-columns: 1fr; }
+      .cart-item { flex-direction: column; gap: 1rem; }
+      .cart-summary { text-align: center; }
     }
   </style>
 </head>
+
 <body>
-  <!-- Header -->
   <header>
     <div class="header-container">
       <div class="logo">Step<span>Pro</span></div>
@@ -645,338 +375,329 @@
         <button class="nav-btn" data-page="shop">Shop</button>
         <button class="nav-btn" data-page="about">About</button>
         <button class="nav-btn" data-page="cart">
-          <span class="cart-icon">🛒</span>
-          <span class="cart-count">0</span>
+          <span class="cart-icon">🛒<span class="cart-count">0</span></span>
         </button>
       </nav>
     </div>
   </header>
 
-  <!-- Home Page -->
   <section class="page active" id="home-page">
     <div class="hero">
       <div class="hero-content">
         <h1>Step Into Style</h1>
-        <p>Discover premium footwear designed for comfort and elegance. Every step tells a story.</p>
+        <p>Premium footwear powered by Azure Load Balancer, Virtual Machines, CI/CD Pipeline and Azure SQL Database.</p>
         <button class="btn nav-btn" data-page="shop">Shop Now</button>
         <button class="btn btn-secondary nav-btn" data-page="about">Learn More</button>
       </div>
     </div>
   </section>
 
-  <!-- Shop Page -->
   <section class="page" id="shop-page">
     <div class="container">
       <div class="products-header">
         <h2>Our Collection</h2>
-        <p>Handpicked shoes for every occasion and style</p>
+        <p>Products are fetched from Azure SQL Database through backend API</p>
+        <div class="db-status" id="db-status">Loading products from database...</div>
       </div>
-      <div class="products-grid">
-        <div class="product-card scroll-animate">
-          <div class="product-image">
-            <img src="public/shoe1.jpg" alt="Pro Runner Elite">
-          </div>
-          <div class="product-info">
-            <div class="product-category">Running</div>
-            <h3 class="product-name">Pro Runner Elite</h3>
-            <p class="product-desc">Experience ultimate performance with our lightweight racing shoe</p>
-            <div class="product-footer">
-              <span class="product-price">$129.99</span>
-              <button class="add-to-cart" onclick="addToCart('Pro Runner Elite', 129.99)">Add</button>
-            </div>
-          </div>
-        </div>
 
-        <div class="product-card scroll-animate">
-          <div class="product-image">
-            <img src="public/shoe2.jpg" alt="Court Master Pro">
-          </div>
-          <div class="product-info">
-            <div class="product-category">Basketball</div>
-            <h3 class="product-name">Court Master Pro</h3>
-            <p class="product-desc">Dominate the court with superior ankle support and cushioning</p>
-            <div class="product-footer">
-              <span class="product-price">$159.99</span>
-              <button class="add-to-cart" onclick="addToCart('Court Master Pro', 159.99)">Add</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card scroll-animate">
-          <div class="product-image">
-            <img src="public/shoe3.jpg" alt="Oxford Classic">
-          </div>
-          <div class="product-info">
-            <div class="product-category">Formal</div>
-            <h3 class="product-name">Oxford Classic</h3>
-            <p class="product-desc">Timeless elegance for your most important moments</p>
-            <div class="product-footer">
-              <span class="product-price">$149.99</span>
-              <button class="add-to-cart" onclick="addToCart('Oxford Classic', 149.99)">Add</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card scroll-animate">
-          <div class="product-image">
-            <img src="public/shoe4.jpg" alt="Trail Blaze Max">
-          </div>
-          <div class="product-info">
-            <div class="product-category">Trail</div>
-            <h3 class="product-name">Trail Blaze Max</h3>
-            <p class="product-desc">Conquer any terrain with aggressive tread and rugged durability</p>
-            <div class="product-footer">
-              <span class="product-price">$139.99</span>
-              <button class="add-to-cart" onclick="addToCart('Trail Blaze Max', 139.99)">Add</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card scroll-animate">
-          <div class="product-image">
-            <img src="public/shoe5.jpg" alt="Vintage Canvas">
-          </div>
-          <div class="product-info">
-            <div class="product-category">Casual</div>
-            <h3 class="product-name">Vintage Canvas</h3>
-            <p class="product-desc">Retro style meets modern comfort for everyday wear</p>
-            <div class="product-footer">
-              <span class="product-price">$89.99</span>
-              <button class="add-to-cart" onclick="addToCart('Vintage Canvas', 89.99)">Add</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card scroll-animate">
-          <div class="product-image">
-            <img src="public/shoe6.jpg" alt="Silver Runner">
-          </div>
-          <div class="product-info">
-            <div class="product-category">Women's</div>
-            <h3 class="product-name">Silver Runner</h3>
-            <p class="product-desc">Sleek design with premium cushioning for women athletes</p>
-            <div class="product-footer">
-              <span class="product-price">$124.99</span>
-              <button class="add-to-cart" onclick="addToCart('Silver Runner', 124.99)">Add</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="products-grid" id="products-grid"></div>
     </div>
   </section>
 
-  <!-- About Page -->
   <section class="page" id="about-page">
     <div class="about">
       <div class="about-container">
         <h2>About StepPro</h2>
         <div class="about-content">
           <div class="about-text">
-            <h3>Crafted for Perfection</h3>
-            <p>Since 2010, StepPro has been at the forefront of footwear innovation. We believe that the right shoe is more than just comfort—it's a statement of style and a commitment to quality.</p>
-            <p>Each pair is meticulously crafted using premium materials, cutting-edge technology, and decades of expertise. Whether you're an athlete, professional, or someone who simply appreciates fine craftsmanship, we have the perfect shoe for you.</p>
+            <h3>Cloud Enabled Footwear Store</h3>
+            <p>StepPro is a sample e-commerce application designed for a cloud migration case study.</p>
+            <p>The application is hosted on Azure Virtual Machines behind an Azure Load Balancer for better availability.</p>
           </div>
           <div class="about-text">
-            <h3>Our Mission</h3>
-            <p>To provide exceptional footwear that enhances every step of your journey. We're passionate about combining style, comfort, and sustainability in every product we create.</p>
-            <p>Our commitment extends beyond products—we're dedicated to creating a positive impact on communities and the environment. When you choose StepPro, you're choosing quality, integrity, and progress.</p>
+            <h3>Azure Architecture</h3>
+            <p>The website is deployed through Azure DevOps pipeline and product data is stored in Azure SQL Database.</p>
+            <p>This demonstrates compute, networking, database, monitoring and deployment flow in Azure.</p>
           </div>
         </div>
 
         <div class="features">
-          <div class="feature scroll-animate">
-            <div class="feature-icon">🏆</div>
-            <h4>Award Winning</h4>
-            <p>Recognized globally for innovation and design excellence in the footwear industry</p>
+          <div class="feature">
+            <div class="feature-icon">☁️</div>
+            <h4>Azure Hosted</h4>
+            <p>Running on Azure Linux VMs behind a public Load Balancer.</p>
           </div>
-          <div class="feature scroll-animate">
-            <div class="feature-icon">♻️</div>
-            <h4>Sustainable</h4>
-            <p>Made with eco-friendly materials and ethical manufacturing practices</p>
+          <div class="feature">
+            <div class="feature-icon">🔁</div>
+            <h4>CI/CD Enabled</h4>
+            <p>Azure DevOps pipeline deploys updates to both web servers.</p>
           </div>
-          <div class="feature scroll-animate">
-            <div class="feature-icon">✓</div>
-            <h4>Quality Assured</h4>
-            <p>Every shoe undergoes rigorous testing to meet our premium standards</p>
+          <div class="feature">
+            <div class="feature-icon">🗄️</div>
+            <h4>Database Connected</h4>
+            <p>Product data comes from Azure SQL Database.</p>
           </div>
-          <div class="feature scroll-animate">
-            <div class="feature-icon">🚚</div>
-            <h4>Fast Delivery</h4>
-            <p>Get your shoes delivered worldwide within 5-7 business days</p>
+          <div class="feature">
+            <div class="feature-icon">📊</div>
+            <h4>Scalable Design</h4>
+            <p>The solution can later be expanded with storage, monitoring and private endpoints.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Cart Page -->
   <section class="page" id="cart-page">
     <div class="cart-container">
       <div class="cart-header">
         <h2>Shopping Cart</h2>
         <p>Review and manage your items</p>
       </div>
-      <div id="cart-items-container" class="cart-items"></div>
-      <div id="empty-message" class="empty-cart" style="display: none;">
+
+      <div id="cart-items-container"></div>
+
+      <div id="empty-message" class="empty-cart" style="display:none;">
         <p>Your cart is empty</p>
         <button class="btn nav-btn" data-page="shop">Continue Shopping</button>
       </div>
-      <div id="cart-summary" class="cart-summary" style="display: none;">
+
+      <div id="cart-summary" class="cart-summary" style="display:none;">
         <p>Subtotal: $<span id="subtotal">0.00</span></p>
-        <p>Tax (10%): $<span id="tax">0.00</span></p>
+        <p>Tax 10%: $<span id="tax">0.00</span></p>
         <p class="cart-total">Total: $<span id="total">0.00</span></p>
         <button class="btn" onclick="checkout()">Proceed to Checkout</button>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2024 StepPro. All rights reserved.</p>
-    <p>Premium Footwear for Every Step of Your Journey</p>
+    <p>&copy; 2026 StepPro. All rights reserved.</p>
+    <p>Azure Cloud Migration Case Study</p>
   </footer>
 
   <script>
-    // Cart functionality
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    // Navigation
-    const navButtons = document.querySelectorAll('.nav-btn');
-    const pages = document.querySelectorAll('.page');
+    const fallbackProducts = [
+      {
+        ProductId: 1,
+        ProductName: "Pro Runner Elite",
+        Category: "Running",
+        Price: 129.99,
+        Stock: 25,
+        Description: "Lightweight performance shoe for daily running."
+      },
+      {
+        ProductId: 2,
+        ProductName: "Court Master Pro",
+        Category: "Basketball",
+        Price: 159.99,
+        Stock: 18,
+        Description: "High ankle support with premium cushioning."
+      },
+      {
+        ProductId: 3,
+        ProductName: "Oxford Classic",
+        Category: "Formal",
+        Price: 149.99,
+        Stock: 30,
+        Description: "Elegant formal footwear for professional use."
+      },
+      {
+        ProductId: 4,
+        ProductName: "Trail Blaze Max",
+        Category: "Trail",
+        Price: 139.99,
+        Stock: 20,
+        Description: "Rugged outdoor shoe for rough terrain."
+      },
+      {
+        ProductId: 5,
+        ProductName: "Vintage Canvas",
+        Category: "Casual",
+        Price: 89.99,
+        Stock: 40,
+        Description: "Classic casual shoe for everyday comfort."
+      },
+      {
+        ProductId: 6,
+        ProductName: "Silver Runner",
+        Category: "Women",
+        Price: 124.99,
+        Stock: 22,
+        Description: "Modern women’s running shoe with soft cushioning."
+      }
+    ];
+
+    const navButtons = document.querySelectorAll(".nav-btn");
+    const pages = document.querySelectorAll(".page");
 
     navButtons.forEach(button => {
-      button.addEventListener('click', (e) => {
-        const pageId = button.getAttribute('data-page');
+      button.addEventListener("click", () => {
+        const pageId = button.getAttribute("data-page");
         showPage(pageId);
       });
     });
 
     function showPage(pageId) {
-      pages.forEach(page => page.classList.remove('active'));
-      navButtons.forEach(btn => btn.classList.remove('active'));
-      
-      const activePage = document.getElementById(pageId + '-page');
-      if (activePage) {
-        activePage.classList.add('active');
-      }
+      pages.forEach(page => page.classList.remove("active"));
+      navButtons.forEach(btn => btn.classList.remove("active"));
 
-      const activeBtn = document.querySelector(`[data-page="${pageId}"]`);
-      if (activeBtn) {
-        activeBtn.classList.add('active');
-      }
+      const page = document.getElementById(pageId + "-page");
+      if (page) page.classList.add("active");
 
-      if (pageId === 'cart') {
-        updateCart();
-      }
+      document.querySelectorAll(`[data-page="${pageId}"]`).forEach(btn => {
+        btn.classList.add("active");
+      });
 
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (pageId === "cart") updateCart();
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    // Add to cart
+    async function loadProducts() {
+      const status = document.getElementById("db-status");
+
+      try {
+        const response = await fetch("/products");
+
+        if (!response.ok) {
+          throw new Error("API not available");
+        }
+
+        const products = await response.json();
+
+        if (!Array.isArray(products) || products.length === 0) {
+          throw new Error("No products returned");
+        }
+
+        status.textContent = "Products loaded from Azure SQL Database";
+        renderProducts(products);
+      } catch (error) {
+        status.textContent = "Database API not connected yet. Showing demo products.";
+        renderProducts(fallbackProducts);
+      }
+    }
+
+    function getProductEmoji(category) {
+      const cat = String(category || "").toLowerCase();
+
+      if (cat.includes("running")) return "👟";
+      if (cat.includes("basketball")) return "🏀";
+      if (cat.includes("formal")) return "👞";
+      if (cat.includes("trail")) return "🥾";
+      if (cat.includes("casual")) return "👟";
+      if (cat.includes("women")) return "✨";
+
+      return "👟";
+    }
+
+    function renderProducts(products) {
+      const grid = document.getElementById("products-grid");
+
+      grid.innerHTML = products.map(product => {
+        const name = product.ProductName || product.name || "Product";
+        const category = product.Category || product.category || "Footwear";
+        const price = Number(product.Price || product.price || 0);
+        const stock = product.Stock ?? product.stock ?? "N/A";
+        const desc = product.Description || product.description || "Premium footwear designed for comfort and style.";
+
+        return `
+          <div class="product-card">
+            <div class="product-image">${getProductEmoji(category)}</div>
+            <div class="product-info">
+              <div class="product-category">${category}</div>
+              <h3 class="product-name">${name}</h3>
+              <p class="product-desc">${desc}</p>
+              <p class="product-stock">Stock Available: ${stock}</p>
+              <div class="product-footer">
+                <span class="product-price">$${price.toFixed(2)}</span>
+                <button class="add-to-cart" onclick="addToCart('${name.replace(/'/g, "\\'")}', ${price})">Add</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
     function addToCart(name, price) {
-      cart.push({ name, price, id: Date.now() });
-      localStorage.setItem('cart', JSON.stringify(cart));
+      cart.push({
+        id: Date.now(),
+        name,
+        price
+      });
+
+      localStorage.setItem("cart", JSON.stringify(cart));
       updateCartCount();
-      
-      // Show feedback
-      const button = event.target;
-      button.textContent = 'Added! ✓';
-      setTimeout(() => {
-        button.textContent = 'Add';
-      }, 1500);
+      alert(`${name} added to cart`);
     }
 
-    // Update cart count
     function updateCartCount() {
-      const count = cart.length;
-      document.querySelector('.cart-count').textContent = count;
+      document.querySelector(".cart-count").textContent = cart.length;
     }
 
-    // Update cart display
     function updateCart() {
-      const container = document.getElementById('cart-items-container');
-      const emptyMsg = document.getElementById('empty-message');
-      const summary = document.getElementById('cart-summary');
+      const container = document.getElementById("cart-items-container");
+      const emptyMsg = document.getElementById("empty-message");
+      const summary = document.getElementById("cart-summary");
 
       if (cart.length === 0) {
-        container.innerHTML = '';
-        emptyMsg.style.display = 'block';
-        summary.style.display = 'none';
+        container.innerHTML = "";
+        emptyMsg.style.display = "block";
+        summary.style.display = "none";
         return;
       }
 
-      emptyMsg.style.display = 'none';
-      summary.style.display = 'block';
+      emptyMsg.style.display = "none";
+      summary.style.display = "block";
 
       container.innerHTML = cart.map(item => `
         <div class="cart-item">
-          <div class="cart-item-info">
+          <div>
             <h4>${item.name}</h4>
             <p>Premium Footwear</p>
           </div>
-          <span class="cart-item-price">$${item.price.toFixed(2)}</span>
+          <span class="cart-item-price">$${Number(item.price).toFixed(2)}</span>
           <button class="remove-btn" onclick="removeFromCart(${item.id})">Remove</button>
         </div>
-      `).join('');
+      `).join("");
 
       calculateTotal();
     }
 
-    // Remove from cart
     function removeFromCart(id) {
       cart = cart.filter(item => item.id !== id);
-      localStorage.setItem('cart', JSON.stringify(cart));
+      localStorage.setItem("cart", JSON.stringify(cart));
       updateCartCount();
       updateCart();
     }
 
-    // Calculate total
     function calculateTotal() {
-      const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-      const tax = subtotal * 0.1;
+      const subtotal = cart.reduce((sum, item) => sum + Number(item.price), 0);
+      const tax = subtotal * 0.10;
       const total = subtotal + tax;
 
-      document.getElementById('subtotal').textContent = subtotal.toFixed(2);
-      document.getElementById('tax').textContent = tax.toFixed(2);
-      document.getElementById('total').textContent = total.toFixed(2);
+      document.getElementById("subtotal").textContent = subtotal.toFixed(2);
+      document.getElementById("tax").textContent = tax.toFixed(2);
+      document.getElementById("total").textContent = total.toFixed(2);
     }
 
-    // Checkout
     function checkout() {
       if (cart.length === 0) return;
-      alert(`Thank you for your purchase! Total: $${(cart.reduce((sum, item) => sum + item.price, 0) * 1.1).toFixed(2)}\n\nYour shoes will be delivered soon! 🎉`);
+
+      const subtotal = cart.reduce((sum, item) => sum + Number(item.price), 0);
+      const total = subtotal * 1.10;
+
+      alert(`Thank you for your purchase! Total: $${total.toFixed(2)}`);
+
       cart = [];
-      localStorage.setItem('cart', JSON.stringify(cart));
+      localStorage.setItem("cart", JSON.stringify(cart));
       updateCartCount();
       updateCart();
     }
 
-    // Scroll animation
-    function observeScrollElements() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.scroll-animate').forEach(el => {
-        observer.observe(el);
-      });
-    }
-
-    // Initial setup
     updateCartCount();
-    observeScrollElements();
-
-    // Re-observe when page changes
-    const mutationObserver = new MutationObserver(() => {
-      observeScrollElements();
-    });
-
-    mutationObserver.observe(document.body, { subtree: true, childList: true });
+    loadProducts();
   </script>
 </body>
 </html>
