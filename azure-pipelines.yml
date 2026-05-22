@@ -12,37 +12,56 @@ variables:
   VM2: 'aso-vm-web-02'
 
 stages:
-  - stage: Deploy
-    displayName: Deploy MyEcomm to Azure VMs
-    jobs:
-      - job: DeployToVMs
-        displayName: Deploy website to both web VMs
-        steps:
-          - checkout: self
+- stage: Deploy
+  jobs:
+  - job: DeployApp
+    steps:
 
-          - task: AzureCLI@2
-            displayName: Deploy index.html to VM Web 01 and VM Web 02
-            inputs:
-              azureSubscription: 'aso-azure-connection'
-              scriptType: bash
-              scriptLocation: inlineScript
-              inlineScript: |
-                echo "Preparing website deployment..."
+    - checkout: self
 
-                HTML_CONTENT=$(base64 -w 0 index.html)
+    - task: AzureCLI@2
+      inputs:
+        azureSubscription: 'aso-azure-connection'
+        scriptType: bash
+        scriptLocation: inlineScript
+        inlineScript: |
 
-                echo "Deploying to VM Web 01..."
-                az vm run-command invoke \
-                  --resource-group "$(RESOURCE_GROUP)" \
-                  --name "$(VM1)" \
-                  --command-id RunShellScript \
-                  --scripts "echo '$HTML_CONTENT' | base64 -d | sudo tee /var/www/html/index.html > /dev/null && sudo systemctl restart nginx"
+          echo "Encoding files..."
 
-                echo "Deploying to VM Web 02..."
-                az vm run-command invoke \
-                  --resource-group "$(RESOURCE_GROUP)" \
-                  --name "$(VM2)" \
-                  --command-id RunShellScript \
-                  --scripts "echo '$HTML_CONTENT' | base64 -d | sudo tee /var/www/html/index.html > /dev/null && sudo systemctl restart nginx"
+          HTML=$(base64 -w 0 index.html)
+          SERVER=$(base64 -w 0 server.js)
+          PACKAGE=$(base64 -w 0 package.json)
 
-                echo "Deployment completed successfully."
+          for VM in $(VM1) $(VM2)
+          do
+            echo "Deploying to $VM"
+
+            az vm run-command invoke \
+              --resource-group "$(RESOURCE_GROUP)" \
+              --name "$VM" \
+              --command-id RunShellScript \
+              --scripts "
+                sudo apt update -y
+                sudo apt install -y nodejs npm nginx
+
+                echo '$HTML' | base64 -d | sudo tee /var/www/html/index.html
+                echo '$SERVER' | base64 -d | sudo tee /home/azureuser/server.js
+                echo '$PACKAGE' | base64 -d | sudo tee /home/azureuser/package.json
+
+                cd /home/azureuser
+                npm install
+
+                # Kill old node if running
+                pkill node || true
+
+                # Set environment variables (IMPORTANT)
+                export DB_USER='asoadmin'
+                export DB_PASSWORD='Amanossan@01'
+                export DB_SERVER='aso-mysql-server-8899.database.windows.net'
+                export DB_NAME='aso-sqldb-myecomm'
+
+                nohup node server.js > app.log 2>&1 &
+
+                sudo systemctl restart nginx
+              "
+          done
