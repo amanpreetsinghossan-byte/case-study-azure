@@ -55,10 +55,10 @@ stages:
                 pkill node || true
 
                 # Set environment variables (IMPORTANT)
-                export DB_USER='asoadmin'
+                export DB_USER='kirito'
                 export DB_PASSWORD='Amanossan@01'
                 export DB_SERVER='aso-mysql-server-8899.database.windows.net'
-                export DB_NAME='aso-sqldb-myecomm'
+                export DB_NAME='aso-mysqldb-7788'
 
                 nohup node server.js > app.log 2>&1 &
 
