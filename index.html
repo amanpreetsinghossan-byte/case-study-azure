@@ -556,30 +556,33 @@
     }
 
     async function loadProducts() {
-      const status = document.getElementById("db-status");
+  const status = document.getElementById("db-status");
 
-      try {
-        const response = await fetch("/products?ts=" + Date.now(), {
-  cache: "no-store"
-});
+  try {
+    const response = await fetch("/products?ts=" + Date.now(), {
+      method: "GET",
+      cache: "no-store"
+    });
 
-        if (!response.ok) {
-          throw new Error("API not available");
-        }
-
-        const products = await response.json();
-
-        if (!Array.isArray(products) || products.length === 0) {
-          throw new Error("No products returned");
-        }
-
-        status.textContent = "Products loaded from Azure SQL Database";
-        renderProducts(products);
-      } catch (error) {
-        status.textContent = "Database API not connected yet. Showing demo products.";
-        renderProducts(fallbackProducts);
-      }
+    if (!response.ok) {
+      throw new Error("API not available");
     }
+
+    const products = await response.json();
+
+    if (!Array.isArray(products) || products.length === 0) {
+      throw new Error("No products returned");
+    }
+
+    status.textContent = `Products loaded from Azure SQL Database (${products.length} items)`;
+    renderProducts(products);
+
+  } catch (error) {
+    console.error("Product API error:", error);
+    status.textContent = "Database API not connected yet. Showing demo products.";
+    renderProducts(fallbackProducts);
+  }
+}
 
     function getProductEmoji(category) {
       const cat = String(category || "").toLowerCase();
