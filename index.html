@@ -96,6 +96,7 @@
     .page { display: none; }
     .page.active { display: block; }
 
+    /* ── Hero ── */
     .hero {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
@@ -108,16 +109,8 @@
     }
 
     .hero-content { max-width: 800px; }
-
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.3rem;
-      margin-bottom: 2rem;
-    }
+    .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+    .hero p  { font-size: 1.3rem; margin-bottom: 2rem; }
 
     .btn {
       padding: 1rem 2.5rem;
@@ -133,6 +126,7 @@
 
     .btn-secondary { background: var(--secondary); }
 
+    /* ── Shop ── */
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -144,14 +138,8 @@
       margin-bottom: 3rem;
     }
 
-    .products-header h2 {
-      font-size: 2.5rem;
-      color: var(--primary);
-    }
-
-    .products-header p {
-      color: var(--text-light);
-    }
+    .products-header h2 { font-size: 2.5rem; color: var(--primary); }
+    .products-header p  { color: var(--text-light); }
 
     .db-status {
       margin-top: 1rem;
@@ -197,21 +185,9 @@
       margin-bottom: 0.5rem;
     }
 
-    .product-name {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .product-desc {
-      color: var(--text-light);
-      margin-bottom: 1rem;
-    }
-
-    .product-stock {
-      color: var(--secondary);
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
+    .product-name { font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .product-desc { color: var(--text-light); margin-bottom: 1rem; }
+    .product-stock { color: var(--secondary); font-weight: 600; margin-bottom: 1rem; }
 
     .product-footer {
       display: flex;
@@ -239,22 +215,10 @@
 
     .add-to-cart:hover { background: var(--secondary); }
 
-    .about {
-      background: var(--light-bg);
-      padding: 4rem 2rem;
-    }
-
-    .about-container {
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .about h2 {
-      text-align: center;
-      color: var(--primary);
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-    }
+    /* ── About ── */
+    .about { background: var(--light-bg); padding: 4rem 2rem; }
+    .about-container { max-width: 900px; margin: auto; }
+    .about h2 { text-align: center; color: var(--primary); font-size: 2.5rem; margin-bottom: 2rem; }
 
     .about-content {
       display: grid;
@@ -262,10 +226,7 @@
       gap: 3rem;
     }
 
-    .about-text p {
-      color: var(--text-light);
-      margin-bottom: 1rem;
-    }
+    .about-text p { color: var(--text-light); margin-bottom: 1rem; }
 
     .features {
       display: grid;
@@ -274,33 +235,13 @@
       margin-top: 3rem;
     }
 
-    .feature {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
+    .feature { background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+    .feature-icon { font-size: 2.3rem; margin-bottom: 1rem; }
 
-    .feature-icon {
-      font-size: 2.3rem;
-      margin-bottom: 1rem;
-    }
-
-    .cart-container {
-      max-width: 900px;
-      margin: auto;
-      padding: 3rem 2rem;
-    }
-
-    .cart-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .cart-header h2 {
-      color: var(--primary);
-      font-size: 2.5rem;
-    }
+    /* ── Cart ── */
+    .cart-container { max-width: 900px; margin: auto; padding: 3rem 2rem; }
+    .cart-header { text-align: center; margin-bottom: 2rem; }
+    .cart-header h2 { color: var(--primary); font-size: 2.5rem; }
 
     .cart-item {
       background: white;
@@ -313,11 +254,7 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
-    .cart-item-price {
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 1.2rem;
-    }
+    .cart-item-price { color: var(--accent); font-weight: 700; font-size: 1.2rem; }
 
     .remove-btn {
       background: #ef4444;
@@ -336,17 +273,318 @@
       text-align: right;
     }
 
-    .cart-total {
-      font-size: 2rem;
-      font-weight: 700;
+    .cart-total { font-size: 2rem; font-weight: 700; }
+
+    .empty-cart { text-align: center; padding: 3rem; color: var(--text-light); }
+
+    /* ── Admin Page ─────────────────────────────────────────────── */
+    .admin-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
     }
 
-    .empty-cart {
-      text-align: center;
-      padding: 3rem;
+    .admin-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .admin-header h2 {
+      font-size: 2rem;
+      color: var(--primary);
+    }
+
+    .admin-toolbar {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: white;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      padding: 0.6rem 1rem;
+      font-size: 0.95rem;
+      width: 220px;
+    }
+
+    .search-box button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .search-box button:hover { background: var(--secondary); }
+
+    .btn-add {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 0.65rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .btn-add:hover { background: #0d6b63; }
+
+    /* Toast */
+    #admin-toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      padding: 0.9rem 1.5rem;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      font-size: 0.95rem;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    #admin-toast.show { opacity: 1; }
+    #admin-toast.success { background: var(--secondary); }
+    #admin-toast.error   { background: var(--accent); }
+
+    /* Admin table */
+    .admin-table-wrap {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      overflow-x: auto;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    .admin-table thead {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+    }
+
+    .admin-table th {
+      padding: 1rem 1.2rem;
+      text-align: left;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .admin-table tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+
+    .admin-table tbody tr:last-child { border-bottom: none; }
+    .admin-table tbody tr:hover { background: #f0fdf9; }
+
+    .admin-table td {
+      padding: 0.9rem 1.2rem;
+      vertical-align: middle;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: #dbeafe;
+      color: var(--primary);
+    }
+
+    .action-btns { display: flex; gap: 0.5rem; }
+
+    .btn-edit {
+      background: #f59e0b;
+      color: white;
+      border: none;
+      padding: 0.4rem 0.9rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .btn-edit:hover { background: #d97706; }
+
+    .btn-delete {
+      background: #ef4444;
+      color: white;
+      border: none;
+      padding: 0.4rem 0.9rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .btn-delete:hover { background: #dc2626; }
+
+    .admin-status {
+      margin: 1.5rem 0 1rem;
+      font-size: 0.9rem;
       color: var(--text-light);
     }
 
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 500;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: white;
+      border-radius: 14px;
+      width: 100%;
+      max-width: 520px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      overflow: hidden;
+      animation: slideUp 0.25s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+
+    .modal-header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 1.4rem 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h3 { font-size: 1.2rem; }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-body { padding: 1.8rem; }
+
+    .form-row { margin-bottom: 1.2rem; }
+
+    .form-row label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+    }
+
+    .form-row input,
+    .form-row textarea {
+      width: 100%;
+      border: 2px solid var(--border);
+      border-radius: 7px;
+      padding: 0.65rem 0.9rem;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+      font-family: inherit;
+    }
+
+    .form-row input:focus,
+    .form-row textarea:focus { border-color: var(--secondary); }
+
+    .form-row textarea { resize: vertical; min-height: 80px; }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-error {
+      color: var(--accent);
+      font-size: 0.85rem;
+      margin-top: 0.3rem;
+    }
+
+    .modal-footer {
+      padding: 1rem 1.8rem 1.8rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+    }
+
+    .btn-cancel {
+      background: var(--border);
+      color: var(--text-dark);
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .btn-save {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 0.7rem 1.8rem;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .btn-save:hover { background: #0d6b63; }
+
+    /* Confirm delete modal */
+    .confirm-modal { max-width: 420px; }
+    .confirm-body  { padding: 1.8rem; text-align: center; }
+    .confirm-body p { color: var(--text-light); margin-top: 0.5rem; }
+    .confirm-icon  { font-size: 3rem; margin-bottom: 0.5rem; }
+    .btn-confirm-delete {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.7rem 1.8rem;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* ── Footer ── */
     footer {
       background: var(--text-dark);
       color: white;
@@ -358,10 +596,11 @@
     @media (max-width: 768px) {
       .hero h1 { font-size: 2.2rem; }
       nav { gap: 0.5rem; flex-wrap: wrap; }
-      .about-content,
-      .features { grid-template-columns: 1fr; }
+      .about-content, .features { grid-template-columns: 1fr; }
       .cart-item { flex-direction: column; gap: 1rem; }
       .cart-summary { text-align: center; }
+      .form-grid { grid-template-columns: 1fr; }
+      .admin-header { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -374,6 +613,7 @@
         <button class="nav-btn active" data-page="home">Home</button>
         <button class="nav-btn" data-page="shop">Shop</button>
         <button class="nav-btn" data-page="about">About</button>
+        <button class="nav-btn" data-page="admin">⚙️ Admin</button>
         <button class="nav-btn" data-page="cart">
           <span class="cart-icon">🛒<span class="cart-count">0</span></span>
         </button>
@@ -381,6 +621,7 @@
     </div>
   </header>
 
+  <!-- ── HOME ────────────────────────────────────────────────────── -->
   <section class="page active" id="home-page">
     <div class="hero">
       <div class="hero-content">
@@ -392,6 +633,7 @@
     </div>
   </section>
 
+  <!-- ── SHOP ────────────────────────────────────────────────────── -->
   <section class="page" id="shop-page">
     <div class="container">
       <div class="products-header">
@@ -399,11 +641,11 @@
         <p>Products are fetched from Azure SQL Database through backend API</p>
         <div class="db-status" id="db-status">Loading products from database...</div>
       </div>
-
       <div class="products-grid" id="products-grid"></div>
     </div>
   </section>
 
+  <!-- ── ABOUT ────────────────────────────────────────────────────── -->
   <section class="page" id="about-page">
     <div class="about">
       <div class="about-container">
@@ -420,7 +662,6 @@
             <p>This demonstrates compute, networking, database, monitoring and deployment flow in Azure.</p>
           </div>
         </div>
-
         <div class="features">
           <div class="feature">
             <div class="feature-icon">☁️</div>
@@ -447,20 +688,18 @@
     </div>
   </section>
 
+  <!-- ── CART ────────────────────────────────────────────────────── -->
   <section class="page" id="cart-page">
     <div class="cart-container">
       <div class="cart-header">
         <h2>Shopping Cart</h2>
         <p>Review and manage your items</p>
       </div>
-
       <div id="cart-items-container"></div>
-
       <div id="empty-message" class="empty-cart" style="display:none;">
         <p>Your cart is empty</p>
         <button class="btn nav-btn" data-page="shop">Continue Shopping</button>
       </div>
-
       <div id="cart-summary" class="cart-summary" style="display:none;">
         <p>Subtotal: $<span id="subtotal">0.00</span></p>
         <p>Tax 10%: $<span id="tax">0.00</span></p>
@@ -470,168 +709,214 @@
     </div>
   </section>
 
+  <!-- ── ADMIN ────────────────────────────────────────────────────── -->
+  <section class="page" id="admin-page">
+    <div class="admin-container">
+
+      <div class="admin-header">
+        <h2>⚙️ Admin — Product Manager</h2>
+        <div class="admin-toolbar">
+          <div class="search-box">
+            <input type="text" id="admin-search-input" placeholder="Search by name, category…" />
+            <button onclick="adminSearch()">🔍</button>
+          </div>
+          <button class="btn-add" onclick="openAddModal()">+ Add Product</button>
+        </div>
+      </div>
+
+      <div class="admin-status" id="admin-status">Loading products…</div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admin-table-body">
+            <tr><td colspan="7" style="text-align:center;padding:2rem;color:var(--text-light)">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Add / Edit Modal ─────────────────────────────────────────── -->
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modal-title">Add Product</h3>
+        <button class="modal-close" onclick="closeModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="edit-id" />
+        <div class="form-row">
+          <label>Product Name *</label>
+          <input type="text" id="f-name" placeholder="e.g. Pro Runner Elite" />
+          <div class="form-error" id="err-name"></div>
+        </div>
+        <div class="form-row">
+          <label>Category *</label>
+          <input type="text" id="f-category" placeholder="e.g. Running" />
+          <div class="form-error" id="err-category"></div>
+        </div>
+        <div class="form-grid">
+          <div class="form-row">
+            <label>Price ($) *</label>
+            <input type="number" id="f-price" placeholder="0.00" min="0" step="0.01" />
+            <div class="form-error" id="err-price"></div>
+          </div>
+          <div class="form-row">
+            <label>Stock *</label>
+            <input type="number" id="f-stock" placeholder="0" min="0" step="1" />
+            <div class="form-error" id="err-stock"></div>
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Description</label>
+          <textarea id="f-desc" placeholder="Short product description…"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+        <button class="btn-save" onclick="saveProduct()">Save Product</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Delete Confirm Modal ─────────────────────────────────────── -->
+  <div class="modal-overlay" id="delete-modal">
+    <div class="modal confirm-modal">
+      <div class="modal-header">
+        <h3>Confirm Delete</h3>
+        <button class="modal-close" onclick="closeDeleteModal()">×</button>
+      </div>
+      <div class="confirm-body">
+        <div class="confirm-icon">🗑️</div>
+        <strong id="delete-product-name">Product</strong>
+        <p>This will permanently remove the product from the database.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" onclick="closeDeleteModal()">Cancel</button>
+        <button class="btn-confirm-delete" onclick="confirmDelete()">Yes, Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Toast ────────────────────────────────────────────────────── -->
+  <div id="admin-toast"></div>
+
   <footer>
     <p>&copy; 2026 StepPro. All rights reserved.</p>
     <p>Azure Cloud Migration Case Study</p>
   </footer>
 
   <script>
+    /* ════════════════════════════════════════════
+       SHARED STATE
+    ════════════════════════════════════════════ */
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let deleteTargetId = null;
 
     const fallbackProducts = [
-      {
-        ProductId: 1,
-        ProductName: "Pro Runner Elite",
-        Category: "Running",
-        Price: 129.99,
-        Stock: 25,
-        Description: "Lightweight performance shoe for daily running."
-      },
-      {
-        ProductId: 2,
-        ProductName: "Court Master Pro",
-        Category: "Basketball",
-        Price: 159.99,
-        Stock: 18,
-        Description: "High ankle support with premium cushioning."
-      },
-      {
-        ProductId: 3,
-        ProductName: "Oxford Classic",
-        Category: "Formal",
-        Price: 149.99,
-        Stock: 30,
-        Description: "Elegant formal footwear for professional use."
-      },
-      {
-        ProductId: 4,
-        ProductName: "Trail Blaze Max",
-        Category: "Trail",
-        Price: 139.99,
-        Stock: 20,
-        Description: "Rugged outdoor shoe for rough terrain."
-      },
-      {
-        ProductId: 5,
-        ProductName: "Vintage Canvas",
-        Category: "Casual",
-        Price: 89.99,
-        Stock: 40,
-        Description: "Classic casual shoe for everyday comfort."
-      },
-      {
-        ProductId: 6,
-        ProductName: "Silver Runner",
-        Category: "Women",
-        Price: 124.99,
-        Stock: 22,
-        Description: "Modern women’s running shoe with soft cushioning."
-      }
+      { ProductId: 1, ProductName: "Pro Runner Elite",  Category: "Running",    Price: 129.99, Stock: 25, Description: "Lightweight performance shoe for daily running." },
+      { ProductId: 2, ProductName: "Court Master Pro",  Category: "Basketball", Price: 159.99, Stock: 18, Description: "High ankle support with premium cushioning." },
+      { ProductId: 3, ProductName: "Oxford Classic",    Category: "Formal",     Price: 149.99, Stock: 30, Description: "Elegant formal footwear for professional use." },
+      { ProductId: 4, ProductName: "Trail Blaze Max",   Category: "Trail",      Price: 139.99, Stock: 20, Description: "Rugged outdoor shoe for rough terrain." },
+      { ProductId: 5, ProductName: "Vintage Canvas",    Category: "Casual",     Price:  89.99, Stock: 40, Description: "Classic casual shoe for everyday comfort." },
+      { ProductId: 6, ProductName: "Silver Runner",     Category: "Women",      Price: 124.99, Stock: 22, Description: "Modern women's running shoe with soft cushioning." }
     ];
 
+    /* ════════════════════════════════════════════
+       NAVIGATION
+    ════════════════════════════════════════════ */
     const navButtons = document.querySelectorAll(".nav-btn");
-    const pages = document.querySelectorAll(".page");
+    const pages      = document.querySelectorAll(".page");
 
     navButtons.forEach(button => {
-      button.addEventListener("click", () => {
-        const pageId = button.getAttribute("data-page");
-        showPage(pageId);
-      });
+      button.addEventListener("click", () => showPage(button.getAttribute("data-page")));
     });
 
     function showPage(pageId) {
-      pages.forEach(page => page.classList.remove("active"));
-      navButtons.forEach(btn => btn.classList.remove("active"));
+      pages.forEach(p => p.classList.remove("active"));
+      navButtons.forEach(b => b.classList.remove("active"));
 
       const page = document.getElementById(pageId + "-page");
       if (page) page.classList.add("active");
 
-      document.querySelectorAll(`[data-page="${pageId}"]`).forEach(btn => {
-        btn.classList.add("active");
-      });
+      document.querySelectorAll(`[data-page="${pageId}"]`).forEach(b => b.classList.add("active"));
 
-      if (pageId === "cart") updateCart();
+      if (pageId === "cart")  updateCart();
+      if (pageId === "admin") loadAdminProducts();
 
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
+    /* ════════════════════════════════════════════
+       SHOP — load & render
+    ════════════════════════════════════════════ */
     async function loadProducts() {
-  const status = document.getElementById("db-status");
-
-  try {
-    const response = await fetch("/products?ts=" + Date.now(), {
-      method: "GET",
-      cache: "no-store"
-    });
-
-    if (!response.ok) {
-      throw new Error("API not available");
+      const status = document.getElementById("db-status");
+      try {
+        const res = await fetch("/products?ts=" + Date.now(), { cache: "no-store" });
+        if (!res.ok) throw new Error("API not available");
+        const products = await res.json();
+        if (!Array.isArray(products) || !products.length) throw new Error("No products");
+        status.textContent = `Products loaded from Azure SQL Database (${products.length} items)`;
+        renderProducts(products);
+      } catch {
+        status.textContent = "Database API not connected yet. Showing demo products.";
+        renderProducts(fallbackProducts);
+      }
     }
-
-    const products = await response.json();
-
-    if (!Array.isArray(products) || products.length === 0) {
-      throw new Error("No products returned");
-    }
-
-    status.textContent = `Products loaded from Azure SQL Database (${products.length} items)`;
-    renderProducts(products);
-
-  } catch (error) {
-    console.error("Product API error:", error);
-    status.textContent = "Database API not connected yet. Showing demo products.";
-    renderProducts(fallbackProducts);
-  }
-}
 
     function getProductEmoji(category) {
-      const cat = String(category || "").toLowerCase();
-
-      if (cat.includes("running")) return "👟";
-      if (cat.includes("basketball")) return "🏀";
-      if (cat.includes("formal")) return "👞";
-      if (cat.includes("trail")) return "🥾";
-      if (cat.includes("casual")) return "👟";
-      if (cat.includes("women")) return "✨";
-
+      const c = String(category || "").toLowerCase();
+      if (c.includes("running"))    return "👟";
+      if (c.includes("basketball")) return "🏀";
+      if (c.includes("formal"))     return "👞";
+      if (c.includes("trail"))      return "🥾";
+      if (c.includes("casual"))     return "👟";
+      if (c.includes("women"))      return "✨";
       return "👟";
     }
 
     function renderProducts(products) {
       const grid = document.getElementById("products-grid");
-
-      grid.innerHTML = products.map(product => {
-        const name = product.ProductName || product.name || "Product";
-        const category = product.Category || product.category || "Footwear";
-        const price = Number(product.Price || product.price || 0);
-        const stock = product.Stock ?? product.stock ?? "N/A";
-        const desc = product.Description || product.description || "Premium footwear designed for comfort and style.";
-
+      grid.innerHTML = products.map(p => {
+        const name  = p.ProductName || p.name || "Product";
+        const cat   = p.Category    || p.category || "Footwear";
+        const price = Number(p.Price || p.price || 0);
+        const stock = p.Stock ?? p.stock ?? "N/A";
+        const desc  = p.Description || p.description || "Premium footwear.";
         return `
           <div class="product-card">
-            <div class="product-image">${getProductEmoji(category)}</div>
+            <div class="product-image">${getProductEmoji(cat)}</div>
             <div class="product-info">
-              <div class="product-category">${category}</div>
+              <div class="product-category">${cat}</div>
               <h3 class="product-name">${name}</h3>
               <p class="product-desc">${desc}</p>
               <p class="product-stock">Stock Available: ${stock}</p>
               <div class="product-footer">
                 <span class="product-price">$${price.toFixed(2)}</span>
-                <button class="add-to-cart" onclick="addToCart('${name.replace(/'/g, "\\'")}', ${price})">Add</button>
+                <button class="add-to-cart" onclick="addToCart('${name.replace(/'/g,"\\'")}', ${price})">Add</button>
               </div>
             </div>
-          </div>
-        `;
+          </div>`;
       }).join("");
     }
 
+    /* ════════════════════════════════════════════
+       CART
+    ════════════════════════════════════════════ */
     function addToCart(name, price) {
-      cart.push({
-        id: Date.now(),
-        name,
-        price
-      });
-
+      cart.push({ id: Date.now(), name, price });
       localStorage.setItem("cart", JSON.stringify(cart));
       updateCartCount();
       alert(`${name} added to cart`);
@@ -643,64 +928,246 @@
 
     function updateCart() {
       const container = document.getElementById("cart-items-container");
-      const emptyMsg = document.getElementById("empty-message");
-      const summary = document.getElementById("cart-summary");
+      const emptyMsg  = document.getElementById("empty-message");
+      const summary   = document.getElementById("cart-summary");
 
-      if (cart.length === 0) {
+      if (!cart.length) {
         container.innerHTML = "";
-        emptyMsg.style.display = "block";
-        summary.style.display = "none";
+        emptyMsg.style.display  = "block";
+        summary.style.display   = "none";
         return;
       }
 
       emptyMsg.style.display = "none";
-      summary.style.display = "block";
+      summary.style.display  = "block";
 
       container.innerHTML = cart.map(item => `
         <div class="cart-item">
-          <div>
-            <h4>${item.name}</h4>
-            <p>Premium Footwear</p>
-          </div>
+          <div><h4>${item.name}</h4><p>Premium Footwear</p></div>
           <span class="cart-item-price">$${Number(item.price).toFixed(2)}</span>
           <button class="remove-btn" onclick="removeFromCart(${item.id})">Remove</button>
-        </div>
-      `).join("");
+        </div>`).join("");
 
       calculateTotal();
     }
 
     function removeFromCart(id) {
-      cart = cart.filter(item => item.id !== id);
+      cart = cart.filter(i => i.id !== id);
       localStorage.setItem("cart", JSON.stringify(cart));
       updateCartCount();
       updateCart();
     }
 
     function calculateTotal() {
-      const subtotal = cart.reduce((sum, item) => sum + Number(item.price), 0);
-      const tax = subtotal * 0.10;
-      const total = subtotal + tax;
-
+      const subtotal = cart.reduce((s, i) => s + Number(i.price), 0);
+      const tax      = subtotal * 0.10;
       document.getElementById("subtotal").textContent = subtotal.toFixed(2);
-      document.getElementById("tax").textContent = tax.toFixed(2);
-      document.getElementById("total").textContent = total.toFixed(2);
+      document.getElementById("tax").textContent      = tax.toFixed(2);
+      document.getElementById("total").textContent    = (subtotal + tax).toFixed(2);
     }
 
     function checkout() {
-      if (cart.length === 0) return;
-
-      const subtotal = cart.reduce((sum, item) => sum + Number(item.price), 0);
-      const total = subtotal * 1.10;
-
+      if (!cart.length) return;
+      const total = cart.reduce((s, i) => s + Number(i.price), 0) * 1.10;
       alert(`Thank you for your purchase! Total: $${total.toFixed(2)}`);
-
       cart = [];
       localStorage.setItem("cart", JSON.stringify(cart));
       updateCartCount();
       updateCart();
     }
 
+    /* ════════════════════════════════════════════
+       ADMIN — load & render table
+    ════════════════════════════════════════════ */
+    async function loadAdminProducts(query = "") {
+      const statusEl = document.getElementById("admin-status");
+      const tbody    = document.getElementById("admin-table-body");
+      statusEl.textContent = "Loading…";
+
+      try {
+        const url = query
+          ? `/products?search=${encodeURIComponent(query)}&ts=${Date.now()}`
+          : `/products?ts=${Date.now()}`;
+        const res = await fetch(url, { cache: "no-store" });
+        if (!res.ok) throw new Error("API unavailable");
+        const products = await res.json();
+        renderAdminTable(products);
+        statusEl.textContent = `${products.length} product(s) found${query ? ` for "${query}"` : ""}.`;
+      } catch {
+        renderAdminTable(fallbackProducts);
+        statusEl.textContent = "⚠️ API not connected — showing demo data (read-only).";
+      }
+    }
+
+    function renderAdminTable(products) {
+      const tbody = document.getElementById("admin-table-body");
+      if (!products.length) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:2rem;color:var(--text-light)">No products found.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = products.map(p => {
+        const id    = p.ProductId   ?? p.id ?? "—";
+        const name  = p.ProductName ?? p.name ?? "—";
+        const cat   = p.Category    ?? p.category ?? "—";
+        const price = Number(p.Price ?? p.price ?? 0).toFixed(2);
+        const stock = p.Stock       ?? p.stock ?? "—";
+        const desc  = (p.Description ?? p.description ?? "").slice(0, 60) + (((p.Description ?? p.description ?? "").length > 60) ? "…" : "");
+        return `
+          <tr>
+            <td>${id}</td>
+            <td><strong>${name}</strong></td>
+            <td><span class="badge">${cat}</span></td>
+            <td>$${price}</td>
+            <td>${stock}</td>
+            <td style="color:var(--text-light)">${desc}</td>
+            <td>
+              <div class="action-btns">
+                <button class="btn-edit"   onclick='openEditModal(${JSON.stringify(p)})'>Edit</button>
+                <button class="btn-delete" onclick="openDeleteModal(${id}, '${name.replace(/'/g,"\\'")}')">Delete</button>
+              </div>
+            </td>
+          </tr>`;
+      }).join("");
+    }
+
+    function adminSearch() {
+      const q = document.getElementById("admin-search-input").value.trim();
+      loadAdminProducts(q);
+    }
+
+    // Allow Enter key in search box
+    document.getElementById("admin-search-input").addEventListener("keydown", e => {
+      if (e.key === "Enter") adminSearch();
+    });
+
+    /* ════════════════════════════════════════════
+       ADMIN — Add Modal
+    ════════════════════════════════════════════ */
+    function openAddModal() {
+      clearForm();
+      document.getElementById("modal-title").textContent = "Add Product";
+      document.getElementById("edit-id").value = "";
+      document.getElementById("product-modal").classList.add("open");
+    }
+
+    function openEditModal(product) {
+      clearForm();
+      document.getElementById("modal-title").textContent = "Edit Product";
+      document.getElementById("edit-id").value    = product.ProductId ?? product.id ?? "";
+      document.getElementById("f-name").value     = product.ProductName ?? product.name ?? "";
+      document.getElementById("f-category").value = product.Category ?? product.category ?? "";
+      document.getElementById("f-price").value    = product.Price ?? product.price ?? "";
+      document.getElementById("f-stock").value    = product.Stock ?? product.stock ?? "";
+      document.getElementById("f-desc").value     = product.Description ?? product.description ?? "";
+      document.getElementById("product-modal").classList.add("open");
+    }
+
+    function closeModal() {
+      document.getElementById("product-modal").classList.remove("open");
+    }
+
+    function clearForm() {
+      ["f-name","f-category","f-price","f-stock","f-desc"].forEach(id => document.getElementById(id).value = "");
+      ["err-name","err-category","err-price","err-stock"].forEach(id => document.getElementById(id).textContent = "");
+    }
+
+    function validateForm() {
+      let valid = true;
+      const name  = document.getElementById("f-name").value.trim();
+      const cat   = document.getElementById("f-category").value.trim();
+      const price = document.getElementById("f-price").value;
+      const stock = document.getElementById("f-stock").value;
+
+      if (!name)  { document.getElementById("err-name").textContent  = "Name is required.";     valid = false; }
+      if (!cat)   { document.getElementById("err-category").textContent = "Category is required."; valid = false; }
+      if (!price || isNaN(price) || Number(price) < 0) { document.getElementById("err-price").textContent = "Enter a valid price."; valid = false; }
+      if (!stock || isNaN(stock) || Number(stock) < 0) { document.getElementById("err-stock").textContent = "Enter a valid stock."; valid = false; }
+      return valid;
+    }
+
+    async function saveProduct() {
+      if (!validateForm()) return;
+
+      const id    = document.getElementById("edit-id").value;
+      const body  = {
+        ProductName:  document.getElementById("f-name").value.trim(),
+        Category:     document.getElementById("f-category").value.trim(),
+        Price:        parseFloat(document.getElementById("f-price").value),
+        Stock:        parseInt(document.getElementById("f-stock").value),
+        Description:  document.getElementById("f-desc").value.trim()
+      };
+      const isEdit = !!id;
+      const url    = isEdit ? `/products/${id}` : "/products";
+      const method = isEdit ? "PUT" : "POST";
+
+      try {
+        const res = await fetch(url, {
+          method,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
+        });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.error || "Request failed");
+        }
+        closeModal();
+        showToast(isEdit ? "Product updated successfully!" : "Product added successfully!", "success");
+        loadAdminProducts(document.getElementById("admin-search-input").value.trim());
+      } catch (err) {
+        showToast("Error: " + err.message, "error");
+      }
+    }
+
+    /* ════════════════════════════════════════════
+       ADMIN — Delete Modal
+    ════════════════════════════════════════════ */
+    function openDeleteModal(id, name) {
+      deleteTargetId = id;
+      document.getElementById("delete-product-name").textContent = name;
+      document.getElementById("delete-modal").classList.add("open");
+    }
+
+    function closeDeleteModal() {
+      deleteTargetId = null;
+      document.getElementById("delete-modal").classList.remove("open");
+    }
+
+    async function confirmDelete() {
+      if (!deleteTargetId) return;
+      try {
+        const res = await fetch(`/products/${deleteTargetId}`, { method: "DELETE" });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.error || "Delete failed");
+        }
+        closeDeleteModal();
+        showToast("Product deleted.", "success");
+        loadAdminProducts(document.getElementById("admin-search-input").value.trim());
+      } catch (err) {
+        closeDeleteModal();
+        showToast("Error: " + err.message, "error");
+      }
+    }
+
+    // Close modals on overlay click
+    document.getElementById("product-modal").addEventListener("click", e => { if (e.target === e.currentTarget) closeModal(); });
+    document.getElementById("delete-modal").addEventListener("click",  e => { if (e.target === e.currentTarget) closeDeleteModal(); });
+
+    /* ════════════════════════════════════════════
+       TOAST
+    ════════════════════════════════════════════ */
+    let toastTimer = null;
+    function showToast(msg, type = "success") {
+      const toast = document.getElementById("admin-toast");
+      toast.textContent = msg;
+      toast.className   = `show ${type}`;
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => { toast.className = ""; }, 3500);
+    }
+
+    /* ════════════════════════════════════════════
+       INIT
+    ════════════════════════════════════════════ */
     updateCartCount();
     loadProducts();
   </script>
